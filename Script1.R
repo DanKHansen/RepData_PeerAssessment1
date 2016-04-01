@@ -12,7 +12,7 @@ ag.steps.pr.day <- aggregate(steps ~ date, dataset, sum)
 
 #Plotting the histogram using the lattice package
 library(lattice)
-histogram(ag.steps.pr.day$steps, data = steps, xlab = "Aggregated number of steps pr. day", ylab = "Frequency of observations", nint = 21)
+histogram(ag.steps.pr.day$steps, xlab = "Aggregated number of steps pr. day", ylab = "Frequency of observations", nint = 21)
 
 
 #Finding the mean and median of aggregated steps per day
@@ -32,7 +32,14 @@ mag.steps.pr.interval[which.max(mag.steps.pr.interval$steps),]
 #How many row in the original dataset contains NA-values
 sum(is.na(dataset$steps))
 
-#The strategy to fill the NA vales is as follows:
-#fill each gap with a correspondant mean value for that specific day, if the day do not have a mean value, 0 will be used
-library(mice)
+#The reason for missing values could be any...
+#Forgot to wear the gadget, no batteries, any other kind of issues
+#So in order to fill them in several approaches could be selected
+#Fill the missing with day-averages, or interval averages or any other kind of approaches
+#We could also use the mice package which includes several different ways to do this
+#I've decided to use the default "ppm" with default iterations based on the assumption
+#that the reason for the missing values a of technical reasons, and that the person has worn
+#the gadget throughout the test-periode.
 
+#Loading the mice package
+library(mice)
