@@ -17,6 +17,7 @@ dataset <- read.csv("activity.csv")
 ###For this part of the assignment, you can ignore the missing values in the dataset.
 ####1. Make a histogram of the total number of steps taken each day
 ####2. Calculate and report the mean and median total number of steps taken per day
+
 ###1:
 
 ```r
@@ -28,12 +29,26 @@ histogram(ag.steps.pr.day$steps, xlab = "Aggregated number of steps pr. day", yl
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)
+
 ###2:
 
 ```r
 #Finding the mean and median of aggregated steps per day
 ds1mean <- mean(ag.steps.pr.day$steps)
 ds1median <- median(ag.steps.pr.day$steps)
+ds1mean
+```
+
+```
+## [1] 10766.19
+```
+
+```r
+ds1median
+```
+
+```
+## [1] 10765
 ```
 
 
@@ -174,14 +189,29 @@ histogram(ag.steps.pr.day.2$steps, xlab = "Aggregated number of steps pr. day", 
 #Finding the mean and median of aggregated steps per day on the imputed dataset
 ds2mean <- mean(ag.steps.pr.day.2$steps)
 ds2median <- median(ag.steps.pr.day.2$steps)
+ds2mean
+```
 
+```
+## [1] 11141.38
+```
+
+```r
+ds2median
+```
+
+```
+## [1] 11352
+```
+
+```r
 meandiff <- ds2mean - ds1mean
 mediandiff <- ds2median - ds1median
 meandiff
 ```
 
 ```
-## [1] 359.172
+## [1] 375.1884
 ```
 
 ```r
@@ -189,7 +219,7 @@ mediandiff
 ```
 
 ```
-## [1] 693
+## [1] 587
 ```
 
 ####As expected the median is close to the same, the mean is of course different, as we have replaced 2304 missing values which results in larger data set, and the mean is dependent of not only the amount of observations but also the size of each value it self.
