@@ -31,5 +31,6 @@ x <- names(myds[,2:289])
 y <- mean(myds[,2])
 for(i in c(3:289)) {y <- cbind(y, mean(myds[, i]))}
 
+x
 
 #2. maximum average
